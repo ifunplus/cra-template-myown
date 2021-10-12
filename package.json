@@ -1,7 +1,12 @@
 {
   "name": "cra-template-myown",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
+  "main": "template.json",
+  "files": [
+    "template",
+    "template.json"
+  ],
   "dependencies": {
     "@reduxjs/toolkit": "^1.5.1",
     "@testing-library/jest-dom": "^4.2.4",
@@ -16,7 +21,10 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "clean-files": "rm -rf ./template",
+    "copy-files": "mkdir template && cp -a ./src/. template/src && cp -a ./public/. template/public  && cp gitignore README.md template/",
+    "prepublishOnly": "yarn clean-files && yarn copy-files"
   },
   "eslintConfig": {
     "extends": "react-app"
